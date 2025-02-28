@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas and Web Storage Example</title>
+</head>
+<body>
+    <h1>Canvas Drawing Example</h1>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000;"></canvas>
+
+    <h2>Stored Content</h2>
+    <p id="content"></p>
+
+    <script>
+        // Drawing on the Canvas
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = "blue";
+        ctx.fillRect(10, 10, 180, 80);
+        ctx.fillStyle = "white";
+        ctx.font = "20px Arial";
+        ctx.fillText("HELLO SVCE", 40, 50);
+
+        // Storing Content in Web Storage
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("message", "HELLO SVCE");
+            document.getElementById("content").innerHTML = localStorage.getItem("message");
+        } else {
+            document.getElementById("content").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+    </script>
+</body>
+</html>
